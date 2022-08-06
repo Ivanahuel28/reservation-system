@@ -1,20 +1,11 @@
-package com.reservation_system.domain;
+package com.reservation_system.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import lombok.Getter;
-import lombok.Setter;
+import javax.persistence.*;
+
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -24,6 +15,9 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @EntityListeners(AuditingEntityListener.class)
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Reservation {
 
     @Id
@@ -53,12 +47,16 @@ public class Reservation {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @CreatedDate
-    @Column(nullable = false, updatable = false)
-    private OffsetDateTime dateCreated;
+//    @CreatedDate
+//    @Column(nullable = false, updatable = false)
+//    private OffsetDateTime dateCreated;
+//
+//    @LastModifiedDate
+//    @Column(nullable = false)
+//    private OffsetDateTime lastUpdated;
 
-    @LastModifiedDate
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private OffsetDateTime lastUpdated;
+    private AmenityType amenityType;
 
 }

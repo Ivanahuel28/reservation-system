@@ -1,6 +1,7 @@
-package com.reservation_system;
+package com.reservation_system.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -9,13 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HomeController {
 
     @GetMapping("/")
-    @ResponseBody
-    public String index() {
-        return "Hello World!";
+    public String index(Model model) {
+
+        return "index";
     }
-
-    @GetMapping("/ivan")
-    @ResponseBody
-    public  String index2(){ return "Ivan"; }
-
 }
