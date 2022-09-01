@@ -1,16 +1,9 @@
 package com.reservation_system.model;
 
 import java.time.OffsetDateTime;
+import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -45,6 +38,8 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Set<Reservation> userReservations;
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private Set<Reservation> reservations = new HashSet<>();
 //    @CreatedDate
 //    @Column(nullable = false, updatable = false)
 //    private OffsetDateTime dateCreated;

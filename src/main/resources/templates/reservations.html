@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Reservations</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"></head>
+</head>
+<body>
+
+<div>
+  <div th:insert="fragments/nav :: nav"></div>
+  <div class="container" style="padding-top: 10vh; display: flex; flex-direction: column; align-items: center;">
+<!--    <h3>Welcome <span th:text=" ${user.getName()}"></span></h3>-->
+    <h3>Welcome <span th:text=" ${user.getId()}"></span></h3>
+    <br>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Amenity</th>
+        <th scope="col">Date</th>
+        <th scope="col">Start Time</th>
+        <th scope="col">End Time</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="reservation : ${user.getReservations()}">
+        <td th:text="${reservation.getAmenityType()}"></td>
+        <td th:text="${reservation.getReservationDate()}"></td>
+        <td th:text="${reservation.getStartTime()}"></td>
+        <td th:text="${reservation.getEndTime()}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
+</body>
+</html>
